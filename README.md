@@ -11,6 +11,6 @@ The data consists of educational background, research areas of interest and serv
 profession.  A tool is needed to take the data from the survey responses and update VIVO.
 1. Photo uploader.  As paertr of the survey, faculty are asked to attach a photo.  The photo
 needs to be uploaded to VIVO.
-1. PubMed update.  This tools has already been written (see [Add PubMed](http://github.com/mconlon/vivo-add-pubmed) and
+1. PubMed update.  This tools has already been written (see [Add PubMed](https://github.com/mconlon17/vivo-add-pubmed) and
 will be duplicated here to ease install of the data project tools (all in one place), and to facilitate the
 on-going VIVO 1.6 upgrade.
