@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+    xmlns:rdf     = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs    = "http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd     = "http://www.w3.org/2001/XMLSchema#"
+    xmlns:owl     = "http://www.w3.org/2002/07/owl#"
+    xmlns:swrl    = "http://www.w3.org/2003/11/swrl#"
+    xmlns:swrlb   = "http://www.w3.org/2003/11/swrlb#"
+    xmlns:vitro1  = "http://vitro.mannlib.cornell.edu/ns/vitro/0.7#"
+    xmlns:bibo    = "http://purl.org/ontology/bibo/"
+    xmlns:c4o     = "http://purl.org/spar/c4o/"
+    xmlns:dcelem  = "http://purl.org/dc/elements/1.1/"
+    xmlns:dcterms = "http://purl.org/dc/terms/"
+    xmlns:event   = "http://purl.org/NET/c4dm/event.owl#"
+    xmlns:foaf    = "http://xmlns.com/foaf/0.1/"
+    xmlns:fabio   = "http://purl.org/spar/fabio/"
+    xmlns:geo     = "http://aims.fao.org/aos/geopolitical.owl#"
+    xmlns:pvs     = "http://vivoweb.org/ontology/provenance-support#"
+    xmlns:ero     = "http://purl.obolibrary.org/obo/"
+    xmlns:scires  = "http://vivoweb.org/ontology/scientific-research#"
+    xmlns:skos    = "http://www.w3.org/2004/02/skos/core#"
+    xmlns:ufVivo  = "http://vivo.ufl.edu/ontology/vivo-ufl/"
+    xmlns:vitro2  = "http://vitro.mannlib.cornell.edu/ns/vitro/public#"
+    xmlns:core    = "http://vivoweb.org/ontology/core#"
+    xmlns:vivo    = "http://vivoweb.org/ontology/core#">
+
+</rdf:RDF>

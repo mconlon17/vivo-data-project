@@ -20,6 +20,7 @@ from datetime import datetime
 from vivotools import get_vivo_value
 from vivotools import get_vivo_uri
 from vivotools import update_data_property
+from vivotools import assert_resource_property
 from vivotools import rdf_header
 from vivotools import rdf_footer
 from vivotools import vivo_sparql_query
@@ -30,6 +31,29 @@ import codecs
 import os
 
 # Helper functions
+
+def make_datetime(y, m, d):
+    """
+    Given three string which should have a year, month and a day,
+    create integr values and return a datetime. Handle empty strings
+    and None.
+    """
+    if y == '' or y is None:
+        return None
+    yn = int(y)
+    if m == '' or m is None:
+        mn = 1
+    else:
+        mn = int(m)
+    if d == '' or d is None:
+        dn = 1
+    else:
+        dn = int(d)
+    try:
+        dt = datetime(yn, mn, dn)
+    except:
+        dt = None
+    return dt
 
 def find_entity_uri(entity_type, entity_predicate, entity_value, debug=False):
     """
@@ -70,7 +94,7 @@ def add_award(award):
     """
     ardf = ""
     uri = get_vivo_uri()
-    return [adf, uri]
+    return [ardf, uri]
 
 def get_degree_uri(code):
     """
@@ -118,6 +142,14 @@ def get_service_role_uri(code):
     uri = ""
     return uri
 
+def add_service(service):
+    """
+    Given a service structure, return uri and RDF for adding service to VIVO
+    """
+    ardf = ""
+    uri = get_vivo_uri()
+    return [ardf, uri]
+
 
 # Start here
 
@@ -149,7 +181,7 @@ srdf = rdf_header()
 for row_number in sorted(redcap.keys()):
     row = redcap[row_number]
 
-    # Demographics
+    # Check ufid and name
 
     ufid = row['uf_id_number']
     uri = find_entity_uri('ufVivo:UFCurrentEntity', 'ufVivo:ufid', ufid,
@@ -163,11 +195,15 @@ for row_number in sorted(redcap.keys()):
             "Last name in VIVO = ", vivo_last_name, "does not match survey",\
             "lastname = ", row['last_name']
         continue
-    vivo_era_commons = get_vivo_value(uri, 'vivo:eRACommonsId')
-    [add, sub] = update_data_property(uri, 'vivo:eRACommonsId', \
-        vivo_era_commons, row['era_commons_id'])
-    ardf = ardf + add
-    srdf = srdf + sub
+
+    # eRACommonsId
+
+    if row['era_commons_id'] != "":
+        vivo_era_commons = get_vivo_value(uri, 'vivo:eRACommonsId')
+        [add, sub] = update_data_property(uri, 'vivo:eRACommonsId', \
+            vivo_era_commons, row['era_commons_id'])
+        ardf = ardf + add
+        srdf = srdf + sub
 
     # Awards
 
@@ -176,8 +212,8 @@ for row_number in sorted(redcap.keys()):
         key = 'award_'+str(i)
         if row[key+'_sponsor'] != "":
             award['organization'] = get_vivo_uri()
-            award['date'] = datetime(int(row[key+'_start_y']), \
-                int(row[key+'_start_m']), int(row[key+'_start_d']))
+            award['date'] = make_datetime(row[key+'_start_y'], \
+                row[key+'_start_m'], row[key+'_start_d'])
             award['person_uri'] = uri      
             [add, award_uri] = add_award(award)
             ardf = ardf + add
@@ -187,30 +223,40 @@ for row_number in sorted(redcap.keys()):
     for i in range(1,5):
         degree = {}
         key = 'deg_'+str(i)
-        if row['degree_'+str(i)+'_choice'] != 0:
+        if row['degree_choice_'+str(i)] != 0:
             degree['organization'] = get_vivo_uri()
-            degree['date'] = datetime(int(row[key+'_start_y']), \
-                int(row[key+'_start_m']), int(row[key+'_start_d']))
+            degree['date'] = make_datetime(row[key+'_date_y'],\
+                row[key+'_date_m'], row[key+'_date_d'])
             degree['field'] = row[key+'_field']
             degree['person_uri'] = uri
-            degree['degree'] = get_degree_uri(row['degree_'+str(i)+'_choice'])
+            degree['degree'] = get_degree_uri(row['degree_choice_'+str(i)])
             [add, degree_uri] = add_degree(degree)
             ardf = ardf + add
+
+    # Research Overview
+
+    if row['expert_1_overv'] != '':
+        vivo_value = get_vivo_value(uri, 'vivo:researchOverview')
+        [add, sub] = update_data_property(uri, 'vivo:researchOverview',\
+            vivo_value, row['expert_1_overv'])
+        ardf = ardf + add
+        srdf = srdf + sub
 
     # Areas of Expertise
 
     for i in range(1,3):
-        key = 'expert_'+str(i)
+        key = 'expert_' + str(i)
         if row[key] != "":
             concept_uri = find_entity_uri('skos:Concept', 'rdfs:label', \
-                                          row[key]) 
-            ardf = ardf + assert_resource_property(uri, 'vivo:hasSubjectArea',
-                        concept_uri)
+                                          row[key])
+            if concept_uri is not None:
+                ardf = ardf + assert_resource_property(uri,
+                    'vivo:hasSubjectArea', concept_uri)
 
     # Geographic Foci
 
     for i in range(1,3):
-        key = 'focus_'+str(i)
+        key = 'focus_'+str(i)+'_country'
         if row[key] != "":
             geo_uri = get_geo_uri(row[key]) 
             ardf = ardf + assert_resource_property(uri,
@@ -230,16 +276,16 @@ for row_number in sorted(redcap.keys()):
 
     for i in range(1,10):
         service = {}
-        key = 'role_'+str(i)
-        if row['service_'+str(i)+'_choice'] != 0:
+        key = 'roles_'+str(i)
+        if row[key+'_yn'] != 0:
             service['journal'] = find_entity_uri('bibo:Journal', 'rdfs:label', \
-                                               row[key]+'_journal')
-            service['start_date'] = datetime(int(row[key+'_start_y']),
-                int(row[key+'_start_m']), int(row[key+'_start_d']))
-            service['end_date'] = datetime(int(row[key+'_start_y']),
-                int(row[key+'_start_m']), int(row[key+'_start_d']))
+                                               row[key+'_journal'])
+            service['start_date'] = make_datetime(row[key+'_start_y'],
+                row[key+'_start_m'], row[key+'_start_d'])
+            service['end_date'] = make_datetime(row[key+'_start_y'],
+                row[key+'_start_m'], row[key+'_start_d'])
             service['person_uri'] = uri
-            service['role'] = get_service_role_uri(row['service_'+str(i)+'_yn'])
+            service['role'] = get_service_role_uri(row[key+'_yn'])
             [add, service_uri] = add_service(service)
             ardf = ardf + add
 
