@@ -34,7 +34,7 @@ import os
 
 def make_datetime(y, m, d):
     """
-    Given three string which should have a year, month and a day,
+    Given three strings which should have a year, month and a day,
     create integr values and return a datetime. Handle empty strings
     and None.
     """
@@ -102,20 +102,61 @@ def get_degree_uri(code):
     """
     Given a degree code from REDCap, return the VIVO URI for the degree
     """
-    uri = ""
+    degrees = {
+        "49": "http://vivoweb.org/ontology/degree/academicDegree4",
+        "47": "http://vivoweb.org/ontology/degree/academicDegree33",
+        "51":  "http://vivoweb.org/ontology/degree/academicDegree1",
+        "61": "http://vivoweb.org/ontology/degree/academicDegree113",
+        "71": "http://vivoweb.org/ontology/degree/academicDegree117",
+        "95": "http://vivoweb.org/ontology/degree/academicDegree71",
+        "86": "http://vivo.ufl.edu/individual/n128082",
+        "149": "http://vivoweb.org/ontology/degree/academicDegree77",
+        "109": "http://vivoweb.org/ontology/degree/academicDegree98",
+        "142": "http://vivoweb.org/ontology/degree/academicDegree96",
+        "146": "http://vivoweb.org/ontology/degree/academicDegree55",
+        "147": "http://vivoweb.org/ontology/degree/academicDegree43"
+        }
+    uri = degrees.get(code, None)
     return uri
 
 def add_degree(degree):
     """
     Given a degree structure, generate a uri and RDF for adding it to VIVO
     """
-    uri = get_vivo_uri()
+    from vivotools import add_dti
+    from vivotools import assert_resource_property
+    from vivotools import assert_data_property
+    from vivotools import untag_predicate
     ardf = ""
+    uri = None
+
+    if degree.get('person_uri', None) is not None and \
+       degree.get('degree_uri', None) is not None:
+        uri = get_vivo_uri()
+        ardf = ardf + assert_resource_property(uri, 'rdfs:type',
+            untag_predicate('vivo:EducationalTraining'))
+        ardf = ardf + assert_resource_property(uri, 'vivo:educationalTrainingOf',
+                                               degree['person_uri'])
+        ardf = ardf + assert_resource_property(uri, 'vivo:degreeEarned',
+                                               degree['degree_uri'])
+        if degree.get('org_uri', None) is not None:
+            ardf = ardf + assert_resource_property(uri,
+                'vivo:trainingAtOrganization', degree['org_uri'])
+
+        if degree.get('field', None) is not None:
+            ardf = ardf + assert_data_property(uri, 'vivo:majorField',
+                                               degree['field'])
+        if degree.get('date', None) is not None:
+            [add, dti_uri] = add_dti({'start': None,
+                                      'end': degree['date']})
+            ardf = ardf + add
+            ardf = ardf + assert_resource_property(uri, 'vivo:dateTimeInterval',
+                                                   dti_uri)
     return [ardf, uri]
 
 def get_geo_uri(code):
     """
-    Given a degree code from REDCap, return the VIVO URI for the geographic
+    Given a geo code from REDCap, return the VIVO URI for the geographic
     area
     """
     uri = ""
@@ -247,15 +288,19 @@ for row_number in sorted(redcap.keys()):
     for i in range(1,5):
         degree = {}
         key = 'deg_'+str(i)
-        if row['degree_choice_'+str(i)] != 0:
-            degree['organization'] = get_vivo_uri()
+        if row['degree_choice_'+str(i)] != "":
+            degree['org_uri'] = find_entity_uri('foaf:Organization',
+                'rdfs:label', row[key+'_place'], debug=True)
             degree['date'] = make_datetime(row[key+'_date_y'],\
                 row[key+'_date_m'], row[key+'_date_d'])
             degree['field'] = row[key+'_field']
             degree['person_uri'] = uri
-            degree['degree'] = get_degree_uri(row['degree_choice_'+str(i)])
+            degree['degree_uri'] = get_degree_uri(row['degree_choice_'+str(i)])
             [add, degree_uri] = add_degree(degree)
             ardf = ardf + add
+            print "Adding Degree"
+            print degree
+            print add
 
     # Research Overview
 

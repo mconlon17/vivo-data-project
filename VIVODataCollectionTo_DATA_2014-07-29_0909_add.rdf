@@ -23,50 +23,290 @@
     xmlns:vitro2  = "http://vitro.mannlib.cornell.edu/ns/vitro/public#"
     xmlns:core    = "http://vivoweb.org/ontology/core#"
     xmlns:vivo    = "http://vivoweb.org/ontology/core#">
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n9780583242">
+        <rdfs:type rdf:resource="http://vivoweb.org/ontology/core#EducationalTraining"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n9780583242">
+        <vivo:educationalTrainingOf rdf:resource="http://vivo.ufl.edu/individual/n28966"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n9780583242">
+        <vivo:degreeEarned rdf:resource="http://vivoweb.org/ontology/degree/academicDegree33"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n9780583242">
+        <vivo:trainingAtOrganization rdf:resource="http://vivo.ufl.edu/individual/n75470"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n9780583242">
+        <vivo:majorField>Biology</vivo:majorField>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n8994385006">
+        <rdf:type rdf:resource="http://vivoweb.org/ontology/core#DateTimeValue"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n8994385006">
+        <vivo:dateTime>1979-12-15T00:00:00</vivo:dateTime>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n8994385006">
+        <vivo:dateTimePrecision rdf:resource="http://vivoweb.org/ontology/core#yearMonthDayPrecision"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n4909285534">
+        <rdf:type rdf:resource="http://vivoweb.org/ontology/core#DateTimeInterval"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n4909285534">
+        <rdf:end rdf:resource="http://vivo.ufl.edu/individual/n8994385006"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n9780583242">
+        <vivo:dateTimeInterval rdf:resource="http://vivo.ufl.edu/individual/n4909285534"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n333857840">
+        <rdfs:type rdf:resource="http://vivoweb.org/ontology/core#EducationalTraining"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n333857840">
+        <vivo:educationalTrainingOf rdf:resource="http://vivo.ufl.edu/individual/n28966"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n333857840">
+        <vivo:degreeEarned rdf:resource="http://vivoweb.org/ontology/degree/academicDegree117"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n333857840">
+        <vivo:trainingAtOrganization rdf:resource="http://vivo.ufl.edu/individual/n5059"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n333857840">
+        <vivo:majorField>Genetics &amp; Cell Biology</vivo:majorField>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1263598285">
+        <rdf:type rdf:resource="http://vivoweb.org/ontology/core#DateTimeValue"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1263598285">
+        <vivo:dateTime>1982-12-18T00:00:00</vivo:dateTime>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1263598285">
+        <vivo:dateTimePrecision rdf:resource="http://vivoweb.org/ontology/core#yearMonthDayPrecision"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n5477371369">
+        <rdf:type rdf:resource="http://vivoweb.org/ontology/core#DateTimeInterval"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n5477371369">
+        <rdf:end rdf:resource="http://vivo.ufl.edu/individual/n1263598285"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n333857840">
+        <vivo:dateTimeInterval rdf:resource="http://vivo.ufl.edu/individual/n5477371369"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n2260823413">
+        <rdfs:type rdf:resource="http://vivoweb.org/ontology/core#EducationalTraining"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n2260823413">
+        <vivo:educationalTrainingOf rdf:resource="http://vivo.ufl.edu/individual/n28966"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n2260823413">
+        <vivo:degreeEarned rdf:resource="http://vivoweb.org/ontology/degree/academicDegree98"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n2260823413">
+        <vivo:trainingAtOrganization rdf:resource="http://vivo.ufl.edu/individual/n5059"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n2260823413">
+        <vivo:majorField>Genetics &amp; Cell Biology</vivo:majorField>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n5357023144">
+        <rdf:type rdf:resource="http://vivoweb.org/ontology/core#DateTimeValue"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n5357023144">
+        <vivo:dateTime>1987-12-12T00:00:00</vivo:dateTime>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n5357023144">
+        <vivo:dateTimePrecision rdf:resource="http://vivoweb.org/ontology/core#yearMonthDayPrecision"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n7357863281">
+        <rdf:type rdf:resource="http://vivoweb.org/ontology/core#DateTimeInterval"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n7357863281">
+        <rdf:end rdf:resource="http://vivo.ufl.edu/individual/n5357023144"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n2260823413">
+        <vivo:dateTimeInterval rdf:resource="http://vivo.ufl.edu/individual/n7357863281"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1329534247">
+        <rdfs:type rdf:resource="http://vivoweb.org/ontology/core#EducationalTraining"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1329534247">
+        <vivo:educationalTrainingOf rdf:resource="http://vivo.ufl.edu/individual/n13695"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1329534247">
+        <vivo:degreeEarned rdf:resource="http://vivoweb.org/ontology/degree/academicDegree77"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1329534247">
+        <vivo:majorField></vivo:majorField>
+    </rdf:Description>
     <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n13695">
         <vivo:researchOverview>Dr. Saidi's research interests include adult congenital heart disease and the transition from pediatric to adult health care.  Dr. Saidi's clinic interests include Adult Congenital Heart Disease and transition of care.</vivo:researchOverview>
     </rdf:Description>
-    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n8210192193">
-        <rdfs:type rdf:resource="http://vivoweb.org/ontology/core#ServiceProviderRole"/>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n615643798">
+        <rdfs:type rdf:resource="http://vivoweb.org/ontology/core#EducationalTraining"/>
     </rdf:Description>
-    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n8210192193">
-        <vivo:serviceProviderRoleOf rdf:resource="http://vivo.ufl.edu/individual/n25562"/>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n615643798">
+        <vivo:educationalTrainingOf rdf:resource="http://vivo.ufl.edu/individual/n25562"/>
     </rdf:Description>
-    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n8210192193">
-        <vivo:RoleIn rdf:resource="http://vivo.ufl.edu/individual/n125088"/>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n615643798">
+        <vivo:degreeEarned rdf:resource="http://vivoweb.org/ontology/degree/academicDegree98"/>
     </rdf:Description>
-    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n8210192193">
-        <rdfs:label>Reviewer</rdfs:label>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n615643798">
+        <vivo:trainingAtOrganization rdf:resource="http://vivo.ufl.edu/individual/n113960"/>
     </rdf:Description>
-    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1551280107">
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n615643798">
+        <vivo:majorField>Statistics</vivo:majorField>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n3112523270">
         <rdf:type rdf:resource="http://vivoweb.org/ontology/core#DateTimeValue"/>
     </rdf:Description>
-    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1551280107">
-        <vivo:dateTime>2013-01-01T00:00:00</vivo:dateTime>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n3112523270">
+        <vivo:dateTime>1982-01-01T00:00:00</vivo:dateTime>
     </rdf:Description>
-    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1551280107">
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n3112523270">
         <vivo:dateTimePrecision rdf:resource="http://vivoweb.org/ontology/core#yearMonthDayPrecision"/>
     </rdf:Description>
-    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n2131345493">
-        <rdf:type rdf:resource="http://vivoweb.org/ontology/core#DateTimeValue"/>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n2131345493">
-        <vivo:dateTime>2013-01-01T00:00:00</vivo:dateTime>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n2131345493">
-        <vivo:dateTimePrecision rdf:resource="http://vivoweb.org/ontology/core#yearMonthDayPrecision"/>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n6676749549">
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n626599975">
         <rdf:type rdf:resource="http://vivoweb.org/ontology/core#DateTimeInterval"/>
     </rdf:Description>
-    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n6676749549">
-        <vivo:start rdf:resource="http://vivo.ufl.edu/individual/n1551280107"/>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n626599975">
+        <rdf:end rdf:resource="http://vivo.ufl.edu/individual/n3112523270"/>
     </rdf:Description>
-    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n6676749549">
-        <rdf:end rdf:resource="http://vivo.ufl.edu/individual/n2131345493"/>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n615643798">
+        <vivo:dateTimeInterval rdf:resource="http://vivo.ufl.edu/individual/n626599975"/>
     </rdf:Description>
-    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n8210192193">
-        <vivo:dateTimeInterval rdf:resource="http://vivo.ufl.edu/individual/n6676749549"/>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1136339780">
+        <rdfs:type rdf:resource="http://vivoweb.org/ontology/core#EducationalTraining"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1136339780">
+        <vivo:educationalTrainingOf rdf:resource="http://vivo.ufl.edu/individual/n25562"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1136339780">
+        <vivo:degreeEarned rdf:resource="http://vivo.ufl.edu/individual/n128082"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1136339780">
+        <vivo:majorField></vivo:majorField>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n6461148588">
+        <rdf:type rdf:resource="http://vivoweb.org/ontology/core#DateTimeValue"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n6461148588">
+        <vivo:dateTime>1979-01-01T00:00:00</vivo:dateTime>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n6461148588">
+        <vivo:dateTimePrecision rdf:resource="http://vivoweb.org/ontology/core#yearMonthDayPrecision"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n3523437468">
+        <rdf:type rdf:resource="http://vivoweb.org/ontology/core#DateTimeInterval"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n3523437468">
+        <rdf:end rdf:resource="http://vivo.ufl.edu/individual/n6461148588"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1136339780">
+        <vivo:dateTimeInterval rdf:resource="http://vivo.ufl.edu/individual/n3523437468"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1369203819">
+        <rdfs:type rdf:resource="http://vivoweb.org/ontology/core#EducationalTraining"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1369203819">
+        <vivo:educationalTrainingOf rdf:resource="http://vivo.ufl.edu/individual/n25562"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1369203819">
+        <vivo:degreeEarned rdf:resource="http://vivoweb.org/ontology/degree/academicDegree1"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1369203819">
+        <vivo:trainingAtOrganization rdf:resource="http://vivo.ufl.edu/individual/n4820"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1369203819">
+        <vivo:majorField>Mathematics</vivo:majorField>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n3030015718">
+        <rdf:type rdf:resource="http://vivoweb.org/ontology/core#DateTimeValue"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n3030015718">
+        <vivo:dateTime>1975-01-01T00:00:00</vivo:dateTime>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n3030015718">
+        <vivo:dateTimePrecision rdf:resource="http://vivoweb.org/ontology/core#yearMonthDayPrecision"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n6580671873">
+        <rdf:type rdf:resource="http://vivoweb.org/ontology/core#DateTimeInterval"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n6580671873">
+        <rdf:end rdf:resource="http://vivo.ufl.edu/individual/n3030015718"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1369203819">
+        <vivo:dateTimeInterval rdf:resource="http://vivo.ufl.edu/individual/n6580671873"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n5110539129">
+        <rdfs:type rdf:resource="http://vivoweb.org/ontology/core#EducationalTraining"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n5110539129">
+        <vivo:educationalTrainingOf rdf:resource="http://vivo.ufl.edu/individual/n25562"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n5110539129">
+        <vivo:degreeEarned rdf:resource="http://vivoweb.org/ontology/degree/academicDegree1"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n5110539129">
+        <vivo:trainingAtOrganization rdf:resource="http://vivo.ufl.edu/individual/n4820"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n5110539129">
+        <vivo:majorField>Economics</vivo:majorField>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n7450377435">
+        <rdf:type rdf:resource="http://vivoweb.org/ontology/core#DateTimeValue"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n7450377435">
+        <vivo:dateTime>1975-01-01T00:00:00</vivo:dateTime>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n7450377435">
+        <vivo:dateTimePrecision rdf:resource="http://vivoweb.org/ontology/core#yearMonthDayPrecision"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1397963781">
+        <rdf:type rdf:resource="http://vivoweb.org/ontology/core#DateTimeInterval"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n1397963781">
+        <rdf:end rdf:resource="http://vivo.ufl.edu/individual/n7450377435"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n5110539129">
+        <vivo:dateTimeInterval rdf:resource="http://vivo.ufl.edu/individual/n1397963781"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n4535608145">
+        <rdfs:type rdf:resource="http://vivoweb.org/ontology/core#ServiceProviderRole"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n4535608145">
+        <vivo:serviceProviderRoleOf rdf:resource="http://vivo.ufl.edu/individual/n25562"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n4535608145">
+        <vivo:RoleIn rdf:resource="http://vivo.ufl.edu/individual/n125088"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n4535608145">
+        <rdfs:label>Reviewer</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n8921259070">
+        <rdf:type rdf:resource="http://vivoweb.org/ontology/core#DateTimeValue"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n8921259070">
+        <vivo:dateTime>2013-01-01T00:00:00</vivo:dateTime>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n8921259070">
+        <vivo:dateTimePrecision rdf:resource="http://vivoweb.org/ontology/core#yearMonthDayPrecision"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n8863319635">
+        <rdf:type rdf:resource="http://vivoweb.org/ontology/core#DateTimeValue"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n8863319635">
+        <vivo:dateTime>2013-01-01T00:00:00</vivo:dateTime>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n8863319635">
+        <vivo:dateTimePrecision rdf:resource="http://vivoweb.org/ontology/core#yearMonthDayPrecision"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n2187575791">
+        <rdf:type rdf:resource="http://vivoweb.org/ontology/core#DateTimeInterval"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n2187575791">
+        <vivo:start rdf:resource="http://vivo.ufl.edu/individual/n8921259070"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n2187575791">
+        <rdf:end rdf:resource="http://vivo.ufl.edu/individual/n8863319635"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://vivo.ufl.edu/individual/n4535608145">
+        <vivo:dateTimeInterval rdf:resource="http://vivo.ufl.edu/individual/n2187575791"/>
     </rdf:Description>
 
 </rdf:RDF>
