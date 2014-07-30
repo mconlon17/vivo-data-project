@@ -70,7 +70,9 @@ def find_entity_uri(entity_type, entity_predicate, entity_value, debug=False):
         SELECT ?uri
         WHERE {
             ?uri a {{entity_type}} .
-            ?uri {{entity_predicate}} "{{entity_value}}" .
+            {?uri {{entity_predicate}} "{{entity_value}}" .}
+            UNION
+            {?uri {{entity_predicate}} "{{entity_value}}"^^<http://www.w3.org/2001/XMLSchema#string> .}
         }
         LIMIT 1
         """
@@ -135,19 +137,40 @@ def add_patent(patent):
     uri = get_vivo_uri()
     return [ardf, uri]
 
-def get_service_role_uri(code):
+def get_service_role(code):
     """
     Given a service role from REDCap, return a VIVO URI for the service role
     """
-    uri = ""
-    return uri
+    roles = {
+        "2": "Editor",
+        "3": "Associate Editor",
+        "4": "Reviewer",
+        }
+    role = roles.get(code, None)
+    return role
 
 def add_service(service):
     """
     Given a service structure, return uri and RDF for adding service to VIVO
     """
+    from vivotools import add_dti
+    from vivotools import assert_resource_property
+    from vivotools import assert_data_property
+    from vivotools import untag_predicate
     ardf = ""
     uri = get_vivo_uri()
+    ardf = ardf + assert_resource_property(uri, 'rdfs:type',
+        untag_predicate('vivo:ServiceProviderRole'))
+    ardf = ardf + assert_resource_property(uri, 'vivo:serviceProviderRoleOf',
+                                           service['person_uri'])
+    ardf = ardf + assert_resource_property(uri, 'vivo:RoleIn',
+                                           service['org_uri'])
+    ardf = ardf + assert_data_property(uri, 'rdfs:label', service['role'])
+    [add, dti_uri] = add_dti({'start': service['start_date'],
+                              'end': service['end_date']})
+    ardf = ardf + add
+    ardf = ardf + assert_resource_property(uri, 'vivo:dateTimeInterval',
+                                           dti_uri)
     return [ardf, uri]
 
 
@@ -180,6 +203,7 @@ srdf = rdf_header()
 
 for row_number in sorted(redcap.keys()):
     row = redcap[row_number]
+    print json.dumps(row, indent=4)
 
     # Check ufid and name
 
@@ -277,17 +301,20 @@ for row_number in sorted(redcap.keys()):
     for i in range(1,10):
         service = {}
         key = 'roles_'+str(i)
-        if row[key+'_yn'] != 0:
-            service['journal'] = find_entity_uri('bibo:Journal', 'rdfs:label', \
-                                               row[key+'_journal'])
+        if row[key+'_yn'] != "1" and row[key+'_yn'] != "":
+            service['org_uri'] = find_entity_uri('bibo:Journal', 'rdfs:label', \
+                                               row[key+'_journal'], debug=True)
             service['start_date'] = make_datetime(row[key+'_start_y'],
                 row[key+'_start_m'], row[key+'_start_d'])
             service['end_date'] = make_datetime(row[key+'_start_y'],
                 row[key+'_start_m'], row[key+'_start_d'])
             service['person_uri'] = uri
-            service['role'] = get_service_role_uri(row[key+'_yn'])
+            service['role'] = get_service_role(row[key+'_yn'])
+            print "Adding Service"
+            print service
             [add, service_uri] = add_service(service)
             ardf = ardf + add
+            print add
 
 adrf = ardf + rdf_footer()
 srdf = srdf + rdf_footer()
