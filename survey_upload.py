@@ -4,9 +4,12 @@
 
     Version 0.1 MC 2014-07-28
     --  Initial version.
+    Version 0.2 MC 2014-07-31
+    --  Demographics, eracommons, degrees, overview, concepts, service are
+        done.
 
     To Do:
-    write all the stubs -- the ustpo one is _difficult_
+    Awards, Geo Foci and Patents.
     
 """
 
@@ -159,7 +162,13 @@ def get_geo_uri(code):
     Given a geo code from REDCap, return the VIVO URI for the geographic
     area
     """
-    uri = ""
+    geo_name = geo_names[code]
+    if code == 51:
+        uri = "DC"
+    elif code < 51:
+        uri = find_vivo_uri('vivo:StateOrProvince', 'rdfs:label', geo_name)
+    else:
+        uri = find_vivo_uri('vivo:Country', 'rdfs:label', geo_name)
     return uri
 
 def get_ustpo_patent(patent_number):
@@ -234,7 +243,10 @@ log_file = sys.stdout
 ##                       errors='xmlcharrefreplace')
 exc_file = codecs.open(file_name+"_exc.txt", mode='w', encoding='ascii',
                        errors='xmlcharrefreplace')
-    
+geo_codes = read_csv('geo_codes.txt')
+geo_names = {}
+for row_number,row in geo_codes.items():
+    geo_names[row['code']] = row['geo_name']
 redcap = read_csv(input_file_name)
 print datetime.now(), len(redcap), "records in survey file", input_file_name
 
@@ -298,9 +310,6 @@ for row_number in sorted(redcap.keys()):
             degree['degree_uri'] = get_degree_uri(row['degree_choice_'+str(i)])
             [add, degree_uri] = add_degree(degree)
             ardf = ardf + add
-            print "Adding Degree"
-            print degree
-            print add
 
     # Research Overview
 
@@ -330,6 +339,7 @@ for row_number in sorted(redcap.keys()):
             geo_uri = get_geo_uri(row[key]) 
             ardf = ardf + assert_resource_property(uri,
                 'vivo:hasGeographicFocus', geo_uri)
+            print add
 
     # Patents
 
@@ -355,11 +365,8 @@ for row_number in sorted(redcap.keys()):
                 row[key+'_start_m'], row[key+'_start_d'])
             service['person_uri'] = uri
             service['role'] = get_service_role(row[key+'_yn'])
-            print "Adding Service"
-            print service
             [add, service_uri] = add_service(service)
             ardf = ardf + add
-            print add
 
 adrf = ardf + rdf_footer()
 srdf = srdf + rdf_footer()
