@@ -40,7 +40,7 @@ import os
 def make_datetime(y, m, d):
     """
     Given three strings which should have a year, month and a day,
-    create integr values and return a datetime. Handle empty strings
+    create integer values and return a datetime. Handle empty strings
     and None.
     """
     if y == '' or y is None:
@@ -491,16 +491,18 @@ def get_ustpo_patent(patent_number):
     Given a patent number, use the USPTO API to return information about
     the patent and return it as a structure
     """
-    patent = {}
+    patent = {'patent_number': patent_number}
     return patent
 
 def add_patent(patent):
     """
     Given a patent structure, return a uri and RDF for adding the patent to VIVO
+    Needs to add patent and then an authorship connecting the patent to a person
     """
     ardf = ""
-    uri = get_vivo_uri()
-    return [ardf, uri]
+    patent_uri = get_vivo_uri()
+    patent['patent_uri'] = patent_uri
+    return [ardf, patent_uri]
 
 def get_service_role(code):
     """
